@@ -8,7 +8,7 @@ export default function (jsAndJsxFiles) {
   var config = {
       output: {
         filename: '[name].js',
-        path: PATHS.PUBLIC + '/js',
+        path: PATHS.PUBLIC,
       },
       devtool: 'source-map',
       module: {

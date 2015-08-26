@@ -9,6 +9,7 @@ let root = path.normalize(__dirname + '/../../../'),
 export default Object.freeze({
   ROOT: root,
   APP: app,
+  FOSC_MODULES: app + '/fosc_modules',
   ROUTES: path.normalize(app + '/routes'),
   COMPONENTS: path.normalize(app + '/components'),
   FRONTEND_RESOURCES: frontendResources,

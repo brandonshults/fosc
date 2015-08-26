@@ -4,10 +4,10 @@ import webpack from 'webpack';
 import glob from 'multi-glob';
 import path from 'path';
 import slash from 'slash';
-import PATHS from './app/modules/project-constants/paths';
-import FILE_TYPES from './app/modules/project-constants/file-types';
+import PATHS from 'fosc_modules/project-constants/paths';
+import FILE_TYPES from 'fosc_modules/project-constants/file-types';
 import gutil from 'gulp-util';
-import generateWebpackConfig from './app/modules/project-utils/generate-webpack-config';
+import generateWebpackConfig from 'fosc_modules/project-utils/generate-webpack-config';
 
 gulp.task('default', ['webpack'], function (cb) {
   cb();

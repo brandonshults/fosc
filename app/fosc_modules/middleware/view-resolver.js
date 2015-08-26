@@ -1,6 +1,6 @@
 'use strict';
 
-import RES_LOCALS from 'project-constants/response-locals';
+import RES_LOCALS from '../project-constants/response-locals';
 import React from 'react';
 
 export default function (req, res, next) {

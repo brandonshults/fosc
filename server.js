@@ -8,6 +8,6 @@
 'use strict';
 
 require('babel/register')({
-  ignore: '../modules/**/*',
+  ignore: '../fosc_modules/**/*',
 });
 require('./server.es6');

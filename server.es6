@@ -1,9 +1,9 @@
 'use strict';
 
 import express from 'express';
-import router from 'middleware/router';
-import viewResolver from 'middleware/view-resolver'
-import RESPONSE_LOCALS from 'project-constants/response-locals';
+import router from './app/fosc_modules/middleware/router';
+import viewResolver from './app/fosc_modules/middleware/view-resolver'
+import RESPONSE_LOCALS from './app/fosc_modules/project-constants/response-locals';
 import favicon from 'serve-favicon';
 
 var app = express();

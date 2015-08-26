@@ -5,8 +5,8 @@
 
 import getPageContentDir from './get-page-content-dir';
 import ShellComponent from '../../components/layout/default-shell/default.shell';
-import findAndRequire from 'project-utils/find-and-require';
-import FILE_TYPES from 'project-constants/file-types';
+import findAndRequire from '../project-utils/find-and-require';
+import FILE_TYPES from '../project-constants/file-types';
 import winston from 'winston';
 
 export default class {
