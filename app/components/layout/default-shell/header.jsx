@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import css from './header.scss';
+import './header.scss';
 
 export default class DefaultHeader extends React.Component {
   render() {

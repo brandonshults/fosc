@@ -1,13 +1,17 @@
 /**
- * This is a hook that is necessary until node can handle es6 on it's own.
+ * Install necessary hooks and then launch the real server.
  * For now we just use babel.
- *
- * Don't compile node_modules at the root, those come from npm and do their own thing,
- * but other node_modules files are ours
  */
 'use strict';
 
+// Babel should ignore all vendor modules and scss imports.
 require('babel/register')({
-  ignore: '../fosc_modules/**/*',
+  ignore: ['./node_modules/**/*', '**/*.scss'],
 });
+
+// Node itself should ignore .scss imports.  Only our build process cares about them.  Dirty bit.
+require.extensions['.scss'] = function() {
+  return null;
+};
+
 require('./server.es6');

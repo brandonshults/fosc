@@ -7,15 +7,19 @@ import Header from './header.jsx';
 import Footer from './footer.jsx';
 
 export default class DefaultShell extends React.Component {
-  get propTypes() {
+  static get propTypes() {
     return {
       children: React.PropTypes.oneOfType([
         React.PropTypes.arrayOf(React.PropTypes.node),
         React.PropTypes.node,
       ]),
-      metaTags: React.propTypes.Array,
-      title: React.propTypes.String,
-    }
+      metaTags: React.PropTypes.array,
+      title: React.PropTypes.string,
+    };
+  }
+
+  constructor(props) {
+    super(props);
   }
 
   render() {
