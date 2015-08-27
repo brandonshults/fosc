@@ -5,7 +5,7 @@
 
 import BasicPage from '../page/basic-page';
 import winston from 'winston';
-import RESPONSE_LOCALS from '../project-constants/response-locals';
+import * as RESPONSE_LOCALS from '../project-constants/response-locals';
 
 export default (req, res, next) => {
   let page = new BasicPage(req);

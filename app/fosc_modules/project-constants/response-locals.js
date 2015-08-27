@@ -1,6 +1,4 @@
 'use strict';
 
-export default Object.freeze({
-  PAGE: Symbol(),
-  CONTROLLER: Symbol(),
-});
+export const PAGE = Symbol();
+export const CONTROLLER = Symbol();

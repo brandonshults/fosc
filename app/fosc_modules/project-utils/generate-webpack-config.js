@@ -1,6 +1,6 @@
 'use strict';
 
-import PATHS from '../project-constants/paths';
+import * as PATHS from '../project-constants/paths';
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 

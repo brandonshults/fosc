@@ -1,6 +1,6 @@
 'use strict';
 
-import RES_LOCALS from '../project-constants/response-locals';
+import * as RESPONSE_LOCALS from '../project-constants/response-locals';
 import React from 'react';
 
 export default function (req, res, next) {
@@ -9,7 +9,7 @@ export default function (req, res, next) {
 }
 
 function assembleView(res) {
-  let page = res.locals[RES_LOCALS.PAGE],
+  let page = res.locals[RESPONSE_LOCALS.PAGE],
     ContentComponent = page.mainContentComponent,
     ShellComponent = page.shellComponent,
     Factory = React.createFactory(composeComponents(ShellComponent, ContentComponent));

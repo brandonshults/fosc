@@ -4,8 +4,8 @@ import webpack from 'webpack';
 import glob from 'multi-glob';
 import path from 'path';
 import slash from 'slash';
-import PATHS from './fosc_modules/project-constants/paths';
-import FILE_TYPES from './fosc_modules/project-constants/file-types';
+import * as PATHS from './fosc_modules/project-constants/paths';
+import * as FILE_TYPES from './fosc_modules/project-constants/file-types';
 import gutil from 'gulp-util';
 import generateWebpackConfig from './fosc_modules/project-utils/generate-webpack-config';
 

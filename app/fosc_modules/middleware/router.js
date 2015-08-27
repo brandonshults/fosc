@@ -5,10 +5,10 @@
  */
 'use strict';
 
-import LOCALS from '../project-constants/response-locals';
+import CONTROLLER from '../project-constants/response-locals';
 import defaultController from './default-controller';
 
 export default function (req, res, next) {
-  res.locals[LOCALS.CONTROLLER] = defaultController;
+  res.locals[CONTROLLER] = defaultController;
   next();
 }

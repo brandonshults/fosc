@@ -1,6 +1,5 @@
 'use strict';
-export default Object.freeze({
-  MODEL: '.model.js',
-  VIEW: '.view.jsx',
-  SHELL: '.shell.jsx',
-});
+
+export const MODEL = '.model.js';
+export const VIEW = '.view.jsx';
+export const SHELL = '.shell.jsx';
