@@ -23,7 +23,7 @@ export default function (jsAndJsxFiles) {
           },
         ],
       },
-      plugins: [new webpack.optimize.CommonsChunkPlugin('shared.js'), new ExtractTextPlugin('[name].css')],
+      plugins: [new webpack.optimize.CommonsChunkPlugin('shared.js'), new ExtractTextPlugin('[name].css'), new webpack.optimize.UglifyJsPlugin({minimize: true})],
     },
     entries = {};
 
