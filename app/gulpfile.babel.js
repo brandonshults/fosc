@@ -14,7 +14,7 @@ gulp.task('default', ['webpack'], function (cb) {
 });
 
 gulp.task('webpack', function(cb) {
-  glob.glob(['./' + slash(path.relative('.', PATHS.ROUTES) + '/**/*' + FILE_TYPES.VIEW), './' + slash(path.relative('.', PATHS.COMPONENTS) + '/**/*' + FILE_TYPES.SHELL)], function (err, jsAndJsxFiles) {
+  glob.glob([`./${slash(path.relative('.', PATHS.ROUTES) + '/**/*' + FILE_TYPES.VIEW)}`, `./${slash(path.relative('.', PATHS.LAYOUT) + '/**/*' + FILE_TYPES.SHELL)}`], function (err, jsAndJsxFiles) {
     let webpackConfig = generateWebpackConfig(jsAndJsxFiles);
 
     webpack(webpackConfig, function(webpackError, stats) {

@@ -14,7 +14,7 @@ export default (directory, filePattern) => {
         } else if (files.length !== 1) {
           return reject('Could not find a file that matches: ' + globPattern);
         }
-        return resolve(require(files[0]));
+        return resolve(files[0]);
       } else {
         return reject('Could not find a file that matches: ' + globPattern);
       }

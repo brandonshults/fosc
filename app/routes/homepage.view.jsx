@@ -1,5 +1,6 @@
 'use strict';
 import React from 'react';
+import './homepage.scss';
 
 export default class MainContentComponent extends React.Component {
   render() {

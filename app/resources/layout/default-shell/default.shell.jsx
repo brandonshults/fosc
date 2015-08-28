@@ -5,6 +5,8 @@
 import React from 'react';
 import Header from './header.jsx';
 import Footer from './footer.jsx';
+import StyleSheetLink from '../../components/style-sheet-link.jsx';
+import * as url from '../../../fosc_modules/project-utils/url';
 
 export default class DefaultShell extends React.Component {
   static get propTypes() {
@@ -15,11 +17,15 @@ export default class DefaultShell extends React.Component {
       ]),
       metaTags: React.PropTypes.array,
       title: React.PropTypes.string,
+      pageCssUrl: React.PropTypes.string,
     };
   }
 
   constructor(props) {
     super(props);
+    this.state = {
+      shellCssUrl: url.getRelativeCssUrl(__filename),
+    };
   }
 
   render() {
@@ -40,6 +46,8 @@ export default class DefaultShell extends React.Component {
           )
         })}
         <title>{this.props.title}</title>
+        <StyleSheetLink href={this.state.shellCssUrl} />
+        <StyleSheetLink href={this.props.pageCssUrl} />
       </head>
       <body>
       <Header />

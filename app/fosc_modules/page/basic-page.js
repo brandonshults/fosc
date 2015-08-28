@@ -5,8 +5,9 @@
 
 import getPageContentDir from './get-page-content-dir';
 import ShellComponent from '../../resources/layout/default-shell/default.shell';
-import findAndRequire from '../project-utils/find-and-require';
+import findFileOfType from '../project-utils/find-file-of-type';
 import * as FILE_TYPES from '../project-constants/file-types';
+import * as url from '../project-utils/url';
 import winston from 'winston';
 
 export default class {
@@ -18,21 +19,23 @@ export default class {
   }
 
   assemblePage() {
-    return findAndRequire(this.contentDir, FILE_TYPES.MODEL)
-        .then((model) => {
-          return this.model = model;
-        }, winston.warn)
-        .then(() => {
-          return findAndRequire(this.contentDir, FILE_TYPES.VIEW);
-        }, winston.error)
-        .then((MainContentComponent) => {
-          return this.mainContentComponent = MainContentComponent;
-        })
-        .then(() => {
-          this.shellComponent = ShellComponent;
-          return this;
-        });
+    return findFileOfType(this.contentDir, FILE_TYPES.VIEW)
+      .then((viewFile) => {
+        this.mainContentComponent = require(viewFile);
 
+        return findFileOfType(this.contentDir, FILE_TYPES.MODEL)
+          .then((modelFile) => {
+            return require(modelFile)
+              .then((model) => {
+                model.pageCssUrl = url.getRelativeCssUrl(viewFile);
+                this.model = model;
+              });
+          }, winston.warn)
+      }, winston.error)
+      .then(() => {
+        this.shellComponent = ShellComponent;
+        return this;
+      });
   }
 
   get mainContentComponent() {
