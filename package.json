@@ -24,6 +24,7 @@
     "gulp-sass": "^2.0.4",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-util": "^3.0.6",
+    "json-stringify-safe": "^5.0.1",
     "jsx-loader": "^0.13.2",
     "multi-glob": "^0.4.0",
     "node-sass": "^3.3.0",
@@ -33,6 +34,7 @@
     "slash": "^1.0.0",
     "style-loader": "^0.12.3",
     "webpack": "^1.11.0",
-    "winston": "^1.0.1"
+    "winston": "^1.0.1",
+    "xmldom": "^0.1.19"
   }
 }

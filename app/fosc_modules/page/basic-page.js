@@ -28,6 +28,7 @@ export default class {
             return require(modelFile)
               .then((model) => {
                 model.pageCssUrl = url.getRelativeCssUrl(viewFile);
+                model.pageJsUrl = url.getRelativeJsUrl(viewFile);
                 this.model = model;
               });
           }, winston.warn)

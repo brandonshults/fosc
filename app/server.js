@@ -14,4 +14,6 @@ require.extensions['.scss'] = function() {
   return null;
 };
 
+global.__IS_NODE__ = true;
+
 require('./server.es6');

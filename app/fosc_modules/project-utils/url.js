@@ -7,3 +7,7 @@ import slash from 'slash';
 export function getRelativeCssUrl(fileName) {
   return slash(`/public/${path.relative(PATHS.APP, fileName).replace(/\..*?$/, '.css')}`);
 }
+
+export function getRelativeJsUrl(fileName) {
+  return slash(`/public/${path.relative(PATHS.APP, fileName).replace(/\..*?$/, '.js')}`);
+}

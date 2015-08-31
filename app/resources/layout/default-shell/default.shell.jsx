@@ -7,6 +7,7 @@ import Header from './header.jsx';
 import Footer from './footer.jsx';
 import StyleSheetLink from '../../components/style-sheet-link.jsx';
 import * as url from '../../../fosc_modules/project-utils/url';
+import safeStringify from 'json-stringify-safe';
 
 export default class DefaultShell extends React.Component {
   static get propTypes() {
@@ -25,6 +26,7 @@ export default class DefaultShell extends React.Component {
     super(props);
     this.state = {
       shellCssUrl: url.getRelativeCssUrl(__filename),
+      shellJsUrl: url.getRelativeJsUrl((__filename)),
     };
   }
 
@@ -46,15 +48,17 @@ export default class DefaultShell extends React.Component {
           )
         })}
         <title>{this.props.title}</title>
-        <StyleSheetLink href={this.state.shellCssUrl} />
-        <StyleSheetLink href={this.props.pageCssUrl} />
+        <link rel="stylesheet" type="text/css" href={this.state.shellCssUrl} />
+        <link rel="stylesheet" type="text/css" href={this.props.pageCssUrl} />
+        <script type="text/json" id="initial-react-props" dangerouslySetInnerHTML={{__html: JSON.stringify(this.props)}} />
       </head>
       <body>
       <Header />
-      <main>
-        {this.props.children}
-      </main>
+      <main></main>
       <Footer />
+      <script type="text/javascript" src="/public/shared.js" />
+      <script type="text/javascript" src={this.state.shellJsUrl} />
+      <script type="text/javascript" src={this.props.pageJsUrl} />
       </body>
       </html>
     );
