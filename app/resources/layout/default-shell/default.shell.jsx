@@ -5,9 +5,7 @@
 import React from 'react';
 import Header from './header.jsx';
 import Footer from './footer.jsx';
-import StyleSheetLink from '../../components/style-sheet-link.jsx';
-import * as url from '../../../fosc_modules/project-utils/url';
-import safeStringify from 'json-stringify-safe';
+import url from '../../../fosc_modules/project-utils/url';
 
 export default class DefaultShell extends React.Component {
   static get propTypes() {
@@ -25,8 +23,8 @@ export default class DefaultShell extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      shellCssUrl: url.getRelativeCssUrl(__filename),
-      shellJsUrl: url.getRelativeJsUrl((__filename)),
+      shellCssUrl: url.getRelativeCssUrlSync(__filename),
+      shellJsUrl: url.getRelativeJsUrlSync((__filename)),
     };
   }
 
@@ -49,7 +47,7 @@ export default class DefaultShell extends React.Component {
         })}
         <title>{this.props.title}</title>
         <link rel="stylesheet" type="text/css" href={this.state.shellCssUrl} />
-        <link rel="stylesheet" type="text/css" href={this.props.pageCssUrl} />
+        {this.props.pageCssUrl !== undefined ? <link rel="stylesheet" type="text/css" href={this.props.pageCssUrl} /> : null}
         <script type="text/json" id="initial-react-props" dangerouslySetInnerHTML={{__html: JSON.stringify(this.props)}} />
       </head>
       <body>

@@ -7,7 +7,7 @@ import getPageContentDir from './get-page-content-dir';
 import ShellComponent from '../../resources/layout/default-shell/default.shell';
 import findFileOfType from '../project-utils/find-file-of-type';
 import * as FILE_TYPES from '../project-constants/file-types';
-import * as url from '../project-utils/url';
+import url from '../project-utils/url';
 import winston from 'winston';
 
 export default class {
@@ -25,13 +25,25 @@ export default class {
 
         return findFileOfType(this.contentDir, FILE_TYPES.MODEL)
           .then((modelFile) => {
-            return require(modelFile)
-              .then((model) => {
-                model.pageCssUrl = url.getRelativeCssUrl(viewFile);
-                model.pageJsUrl = url.getRelativeJsUrl(viewFile);
+            return require(modelFile);
+          }, (err) => {
+            winston.warn(err);
+            return {};
+          })
+          .then((model) => {
+            return url.getRelativeCssUrl(viewFile)
+              .then((pageCssUrl) => {
+                model.pageCssUrl = pageCssUrl;
+              })
+              .then(() => {
+                return url.getRelativeJsUrl(viewFile);
+              })
+              .then((pageJsUrl) => {
+                model.pageJsUrl = pageJsUrl;
                 this.model = model;
-              });
-          }, winston.warn)
+                return model;
+              })
+          });
       }, winston.error)
       .then(() => {
         this.shellComponent = ShellComponent;
