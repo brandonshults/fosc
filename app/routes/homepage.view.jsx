@@ -23,9 +23,3 @@ export default class MainContentComponent extends React.Component {
     )
   }
 }
-
-if (typeof __IS_NODE__ === 'undefined') {
-  let Factory = React.createFactory(MainContentComponent),
-    props = JSON.parse(document.getElementById('initial-react-props').innerHTML);
-  React.render(Factory(props), document.querySelector('main'));
-}
