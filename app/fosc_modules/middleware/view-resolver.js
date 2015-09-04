@@ -2,7 +2,6 @@
 
 import * as RESPONSE_LOCALS from '../project-constants/response-locals';
 import React from 'react';
-import xmldom from 'xmldom';
 
 export default function (req, res, next) {
   res.set('Content-Type', 'text/html');
