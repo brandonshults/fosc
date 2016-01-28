@@ -21,11 +21,12 @@ export default class {
   assemblePage() {
     return findFileOfType(this.contentDir, FILE_TYPES.VIEW)
       .then((viewFile) => {
+        // System isn't really specced out, there is a babel plugin, but for now just abuse require
         this.mainContentComponent = require(viewFile).default;
 
         return findFileOfType(this.contentDir, FILE_TYPES.MODEL)
           .then((modelFile) => {
-            return require(modelFile);
+            return require(modelFile).default;
           }, (err) => {
             winston.warn(err);
             return {};
