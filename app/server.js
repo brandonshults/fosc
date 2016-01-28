@@ -5,7 +5,7 @@
 'use strict';
 
 // Babel should ignore all vendor modules and scss imports.
-require('babel/register')({
+require('babel-core/register')({
   ignore: ['./node_modules/**/*', '**/*.scss'],
 });
 

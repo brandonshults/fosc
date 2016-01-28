@@ -7,7 +7,7 @@ import slash from 'slash';
 import * as PATHS from './fosc_modules/project-constants/paths';
 import * as FILE_TYPES from './fosc_modules/project-constants/file-types';
 import gutil from 'gulp-util';
-import generateWebpackConfig from './fosc_modules/project-utils/generate-webpack-config';
+import generateWebpackConfig from './generate-webpack-config';
 
 gulp.task('default', ['webpack'], function (cb) {
   cb();

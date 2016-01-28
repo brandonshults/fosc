@@ -1,6 +1,6 @@
 'use strict';
 
-import * as PATHS from '../project-constants/paths';
+import * as PATHS from './fosc_modules/project-constants/paths';
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
@@ -32,12 +32,13 @@ export default function (jsAndJsxFiles) {
       plugins: [new webpack.optimize.CommonsChunkPlugin('shared.js'), new ExtractTextPlugin('[name].css'), new webpack.optimize.UglifyJsPlugin({minimize: true})],
       wrap: {
         view: {
+          before: "import ReactDOM from 'react-dom';",
           after: `
             /*************** This was added in a very filthy manner via webpack ***************/
             if (typeof __IS_NODE__ === 'undefined') {
               var Factory = React.createFactory(MainContentComponent),
                   props = JSON.parse(document.getElementById('initial-react-props').innerHTML);
-              React.render(Factory(props), document.querySelector('main'));
+              ReactDOM.render(Factory(props), document.querySelector('main'));
             }
             /**********************************************************************************/`,
         },

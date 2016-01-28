@@ -21,7 +21,7 @@ export default class {
   assemblePage() {
     return findFileOfType(this.contentDir, FILE_TYPES.VIEW)
       .then((viewFile) => {
-        this.mainContentComponent = require(viewFile);
+        this.mainContentComponent = require(viewFile).default;
 
         return findFileOfType(this.contentDir, FILE_TYPES.MODEL)
           .then((modelFile) => {
